@@ -1,8 +1,13 @@
 ﻿var numberString = string.Empty;
 do
 {
-    Console.WriteLine("Ingrese número entero o 'S' para salir: ");
+    Console.Write("Ingrese número entero o la palabra 'Salir' para salir: ");
     numberString = Console.ReadLine(); // "45"
+    if (numberString!.ToLower() == "salir")
+    {
+        continue;
+    }
+
     var numberInt = 0;
     if (int.TryParse(numberString, out numberInt))
     {
@@ -14,9 +19,11 @@ do
         {
             Console.WriteLine($"El número {numberInt},es impar.");
         }
+
     }
     else
     {
         Console.WriteLine($"Lo que ingresaste: {numberString}, no es un número entero.");
     }
-} while (numberString != "S");
+} while (numberString!.ToLower() != "salir");
+Console.WriteLine("Game Over.");
